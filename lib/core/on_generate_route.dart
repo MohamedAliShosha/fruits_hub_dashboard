@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub_dashboard/features/add_product/presentation/views/add_product_view.dart';
 import 'package:fruits_hub_dashboard/features/dashboard/views/dashboard_view.dart';
 
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -6,6 +7,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case DashboardView.routeName:
         return const DashboardView();
+      case AddProductView.routeName:
+        return const AddProductView();
 
       default:
         return const Scaffold();
