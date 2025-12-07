@@ -45,5 +45,7 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allow Fruits Hub Dashboard to access your photo library to get the required image for the product that will be added to DB</string>
 </dict>
 </plist>
