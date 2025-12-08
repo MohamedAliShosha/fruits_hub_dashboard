@@ -7,6 +7,7 @@ class AddProductInputEntity {
   final num price;
   final File image;
   final bool isFeatured;
+  // This url of the image that will be uploaded to DB not the image itself
   final String? imageUrl;
 
   AddProductInputEntity({
