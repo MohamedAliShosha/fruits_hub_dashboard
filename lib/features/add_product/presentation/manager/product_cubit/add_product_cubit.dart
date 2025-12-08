@@ -6,8 +6,9 @@ import 'package:fruits_hub_dashboard/features/add_product/domain/entities/add_pr
 
 part 'add_product_state.dart';
 
-class ProductCubit extends Cubit<ProductState> {
-  ProductCubit(this.imagesRepo, this.productRepo) : super(AddProductInitial());
+class AddProductCubit extends Cubit<ProductState> {
+  AddProductCubit(this.imagesRepo, this.productRepo)
+      : super(AddProductInitial());
 
   final ImagesRepo imagesRepo;
   final ProductRepo productRepo;
