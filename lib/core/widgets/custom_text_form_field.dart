@@ -9,7 +9,8 @@ class CustomTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.controller,
     this.isObscureText = false,
-    this.maxLines = 1, // default value
+    this.maxLines = 1,
+    this.onSaved, // default value
   });
 
   final String hintText;
@@ -18,10 +19,12 @@ class CustomTextFormField extends StatelessWidget {
   final int? maxLines;
   final TextEditingController? controller;
   final bool isObscureText;
+  final void Function(String?)? onSaved;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onSaved: onSaved,
       maxLines: maxLines,
       obscureText: isObscureText,
       controller: controller,
