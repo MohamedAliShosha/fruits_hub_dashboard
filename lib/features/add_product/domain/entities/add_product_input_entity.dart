@@ -6,11 +6,19 @@ class AddProductInputEntity {
   final String desc;
   final num price;
   final File image;
+  final String? imageUrl;
   final bool isFeatured;
-  // This url of the image that will be uploaded to DB not the image itself
-  String? imageUrl;
-
+  final int expirationMonths;
+  final bool isOrganic;
+  final num averageRating = 0;
+  final num ratingCount = 0;
+  final int numberOfCalories;
+  final int unitAmount;
   AddProductInputEntity({
+    required this.expirationMonths,
+    this.isOrganic = false,
+    required this.numberOfCalories,
+    required this.unitAmount,
     this.imageUrl,
     required this.name,
     required this.code,

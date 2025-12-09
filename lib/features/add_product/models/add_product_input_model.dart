@@ -11,9 +11,19 @@ class AddProductInputModel {
   final bool isFeatured;
   // This url of the image that will be uploaded to DB not the image itself
   String? imageUrl;
+  final int expirationMonths;
+  final bool isOrganic;
+  final num averageRating = 0;
+  final num ratingCount = 0;
+  final int numberOfCalories;
+  final int unitAmount;
 
   AddProductInputModel({
     this.imageUrl,
+    required this.expirationMonths,
+    this.isOrganic = false,
+    required this.numberOfCalories,
+    required this.unitAmount,
     required this.name,
     required this.code,
     required this.desc,
@@ -25,6 +35,10 @@ class AddProductInputModel {
   // Used to create an AddProductInputModel through AddProductInputEntity
   factory AddProductInputModel.fromEntity(AddProductInputEntity entity) {
     return AddProductInputModel(
+      expirationMonths: entity.expirationMonths,
+      numberOfCalories: entity.numberOfCalories,
+      unitAmount: entity.unitAmount,
+      isOrganic: entity.isOrganic,
       imageUrl: entity.imageUrl,
       name: entity.name,
       code: entity.code,
@@ -43,6 +57,10 @@ class AddProductInputModel {
       'price': price,
       'isFeatured': isFeatured,
       'imageUrl': imageUrl,
+      'expirationMonths': expirationMonths,
+      'isOrganic': isOrganic,
+      'numberOfCalories': numberOfCalories,
+      'unitAmount': unitAmount
     };
   }
 }
