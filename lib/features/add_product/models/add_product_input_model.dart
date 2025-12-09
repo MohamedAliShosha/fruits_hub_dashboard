@@ -41,7 +41,6 @@ class AddProductInputModel {
       'code': code,
       'desc': desc,
       'price': price,
-      'image': image.path,
       'isFeatured': isFeatured,
       'imageUrl': imageUrl,
     };

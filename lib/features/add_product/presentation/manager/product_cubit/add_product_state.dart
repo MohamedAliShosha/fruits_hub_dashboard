@@ -1,15 +1,15 @@
 part of 'add_product_cubit.dart';
 
 @immutable
-sealed class ProductState {}
+sealed class AddProductState {}
 
-final class AddProductInitial extends ProductState {}
+final class AddProductInitial extends AddProductState {}
 
-final class AddProductLoading extends ProductState {}
+final class AddProductLoading extends AddProductState {}
 
-final class AddProductSuccess extends ProductState {}
+final class AddProductSuccess extends AddProductState {}
 
-final class AddProductFailure extends ProductState {
+final class AddProductFailure extends AddProductState {
   final String errorMessage;
   AddProductFailure(this.errorMessage);
 }
