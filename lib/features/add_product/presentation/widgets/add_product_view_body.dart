@@ -140,6 +140,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
                       AddProductInputEntity input = AddProductInputEntity(
+                        reviews: [],
                         expirationMonths: expirationMonths.toInt(),
                         isOrganic: isOrganic,
                         numberOfCalories: numberOfCalories.toInt(),

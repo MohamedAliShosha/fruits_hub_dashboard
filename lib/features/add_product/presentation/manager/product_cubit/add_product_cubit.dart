@@ -32,7 +32,9 @@ class AddProductCubit extends Cubit<AddProductState> {
               failure.errorMessage,
             ),
           ),
-          (right) => emit(AddProductSuccess()),
+          (right) => emit(
+            AddProductSuccess(),
+          ),
         );
       },
     );
