@@ -39,6 +39,11 @@ class SupabaseStorageService implements StorageService {
         .from('fruits_images')
         .upload('$path/$fileName.$extensionName', file);
 
+    // The way to get the uploaded image url
+    final String imageUrl = _supabase.client.storage
+        .from('fruits_images')
+        .getPublicUrl('$path/$fileName.$extensionName');
+
     return result;
   }
 }
