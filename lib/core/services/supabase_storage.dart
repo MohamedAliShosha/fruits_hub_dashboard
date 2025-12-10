@@ -6,23 +6,39 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:path/path.dart' as b;
 
 class SupabaseStorageService implements StorageService {
-  static late Supabase supabase;
+  static late Supabase _supabase;
+
+  static createBuckets(String bucketName) async {
+    var buckets = await _supabase.client.storage.listBuckets();
+
+    bool isBucketExits = false;
+
+    for (var bucket in buckets) {
+      if (bucket.id == bucketName) {
+        isBucketExits = true;
+        break;
+      }
+    }
+    if (!isBucketExits) {
+      await _supabase.client.storage.createBucket(bucketName);
+    }
+  }
 
   static initSupabase() async {
-    supabase = await Supabase.initialize(
-      // getting url and key from project at supabase account
-      anonKey: kSupabaseApiKey,
+    _supabase = await Supabase.initialize(
       url: kSupabaseUrl,
+      anonKey: kSupabaseKey,
     );
   }
 
   @override
   Future<String> uploadFile(File file, String path) async {
-    String fileName = file.path;
+    String fileName = b.basename(file.path);
     String extensionName = b.extension(file.path);
-    var result = await supabase.client.storage
+    var result = await _supabase.client.storage
         .from('fruits_images')
         .upload('$path/$fileName.$extensionName', file);
+
     return result;
   }
 }

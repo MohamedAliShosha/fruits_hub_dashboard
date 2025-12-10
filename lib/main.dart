@@ -12,6 +12,8 @@ import 'package:fruits_hub_dashboard/firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SupabaseStorageService.initSupabase();
+  await SupabaseStorageService.createBuckets('fruits_images');
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
