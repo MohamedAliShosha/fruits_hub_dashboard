@@ -3,8 +3,8 @@ import 'package:fruits_hub_dashboard/core/errors/failures.dart';
 import 'package:fruits_hub_dashboard/core/repos/product_repo/product_repo.dart';
 import 'package:fruits_hub_dashboard/core/services/database_service.dart';
 import 'package:fruits_hub_dashboard/core/utils/backend_endpoints.dart';
-import 'package:fruits_hub_dashboard/features/add_product/domain/entities/add_product_input_entity.dart';
-import 'package:fruits_hub_dashboard/features/add_product/models/add_product_input_model.dart';
+import 'package:fruits_hub_dashboard/features/add_product/domain/entities/product_entity.dart';
+import 'package:fruits_hub_dashboard/features/add_product/models/product_model.dart';
 
 class ProductsRepoImplement implements ProductRepo {
   final DatabaseService databaseService;
@@ -13,11 +13,11 @@ class ProductsRepoImplement implements ProductRepo {
 
   @override
   Future<Either<Failure, void>> addProduct(
-      AddProductInputEntity addProductInputEntity) async {
+      ProductEntity addProductInputEntity) async {
     try {
       await databaseService.addData(
         path: BackendEndpoints.addProductsCollection,
-        data: AddProductInputModel.fromEntity(addProductInputEntity).toJson(),
+        data: ProductModel.fromEntity(addProductInputEntity).toJson(),
       );
       return right(null);
     } catch (e) {
