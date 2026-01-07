@@ -22,11 +22,39 @@ class FireStoreService implements DatabaseService {
   }
 
   @override
-  Future<Map<String, dynamic>> getData(
-      {required String path, required String documentId}) async {
+  Future<dynamic> getData({
+    required String path,
+    String? documentId,
+    // used to filter the data we will filter products based on these query parameters
+    Map<String, dynamic>? query,
+  }) async {
     // Accessing the collection then the document of a specific userId then getting the data
-    var data = await firestore.collection(path).doc(documentId).get();
-    return data.data() as Map<String, dynamic>;
+    if (documentId != null) {
+      var data = await firestore.collection(path).doc(documentId).get();
+      return data.data() as Map<String, dynamic>;
+    } else {
+      // I convert the return of this method from collectionReference to Query<Map<String, dynamic>> to be able to do operations on it like orderBy and limit
+      Query<Map<String, dynamic>> data = firestore.collection(path);
+      if (query != null) {
+        if (query['orderBy'] != null) {
+          var orderByField = query['orderBy'];
+          var descending = query['descending'];
+          data = data.orderBy(orderByField, descending: descending);
+        }
+
+        if (query['Limit'] != null) {
+          var limit = query['Limit'];
+          data = data.limit(limit);
+        }
+
+        var result = await data.get();
+        return result.docs
+            .map(
+              (e) => e.data(),
+            )
+            .toList();
+      }
+    }
   }
 
   @override

@@ -1,4 +1,7 @@
 import 'package:fruits_hub_dashboard/features/orders/data/models/shipping_address_model.dart';
+import 'package:fruits_hub_dashboard/features/orders/domain/entities/order_entity.dart';
+
+import '../../../../core/enums/order_enum.dart';
 
 import 'order_product_model.dart';
 
@@ -40,22 +43,22 @@ class OrderModel {
         'paymentMethod': paymentMethod,
       };
 
-  // toEntity() => OrderEntity(
-  //       orderID: orderID,
-  //       totalPrice: totalPrice,
-  //       status: fetchEnum(),
-  //       uId: uId,
-  //       shippingAddressModel: shippingAddressModel.toEntity(),
-  //       orderProducts: orderProducts.map((e) => e.toEntity()).toList(),
-  //       paymentMethod: paymentMethod,
-  //     );
+  toEntity() => OrderEntity(
+        orderID: orderID,
+        totalPrice: totalPrice,
+        status: fetchEnum(),
+        uId: uId,
+        shippingAddressModel: shippingAddressModel.toEntity(),
+        orderProducts: orderProducts.map((e) => e.toEntity()).toList(),
+        paymentMethod: paymentMethod,
+      );
 
-  // OrderStatusEnum fetchEnum() {
-  //   return OrderStatusEnum.values.firstWhere((e) {
-  //     var enumStatus = e.name.toString();
-  //     return enumStatus == (status ?? 'pending');
-  //   });
-  // }
+  OrderStatusEnum fetchEnum() {
+    return OrderStatusEnum.values.firstWhere((e) {
+      var enumStatus = e.name.toString();
+      return enumStatus == (status ?? 'pending');
+    });
+  }
 }
 
 // payment method
