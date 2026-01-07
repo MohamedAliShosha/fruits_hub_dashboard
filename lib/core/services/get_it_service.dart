@@ -21,6 +21,9 @@ void setupGetIt() {
       getIt<StorageService>(),
     ),
   );
+  getIt.registerSingleton<FireStoreService>(
+    FireStoreService(),
+  );
   getIt.registerSingleton<DatabaseService>(
     FireStoreService(),
   );
@@ -29,7 +32,7 @@ void setupGetIt() {
   );
   getIt.registerSingleton<OrdersRepo>(
     OrdersRepoImplement(
-      databaseService: getIt<FireStoreService>(),
+      databaseService: getIt<DatabaseService>(),
     ),
   );
 }
