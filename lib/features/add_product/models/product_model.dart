@@ -17,12 +17,14 @@ class ProductModel {
   final num averageRating = 0;
   final num ratingCount = 0;
   final int numberOfCalories;
+  final int sellingCount;
   final int unitAmount;
   final List<ReviewModel> reviews;
 
   ProductModel({
     this.imageUrl,
     required this.reviews,
+    this.sellingCount = 0,
     required this.expirationMonths,
     this.isOrganic = false,
     required this.numberOfCalories,
@@ -58,6 +60,7 @@ class ProductModel {
       'name': name,
       'code': code,
       'desc': desc,
+      'sellingCount': sellingCount,
       'price': price,
       'isFeatured': isFeatured,
       'imageUrl': imageUrl,
