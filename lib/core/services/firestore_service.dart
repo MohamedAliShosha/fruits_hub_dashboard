@@ -63,4 +63,31 @@ class FireStoreService implements DatabaseService {
     var data = await firestore.collection(path).doc(documentId).get();
     return data.exists;
   }
+
+  @override
+  Stream getStreamData(
+      {required String path, Map<String, dynamic>? query}) async* {
+    Query<Map<String, dynamic>> data = firestore.collection(path);
+    if (query != null) {
+      if (query['orderBy'] != null) {
+        var orderByField = query['orderBy'];
+        var descending = query['descending'];
+        data = data.orderBy(orderByField, descending: descending);
+      }
+
+      if (query['Limit'] != null) {
+        var limit = query['Limit'];
+        data = data.limit(limit);
+      }
+
+      // await for is not a loop but it is used to listen to the data changes "snapshots" to get the latest data
+      await for (var snapshot in data.snapshots()) {
+        yield snapshot.docs
+            .map(
+              (e) => e.data(),
+            )
+            .toList();
+      }
+    }
+  }
 }
