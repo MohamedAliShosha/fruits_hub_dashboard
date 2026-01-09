@@ -14,6 +14,11 @@ abstract class DatabaseService {
     // used to filter the data we will filter products based on these query parameters
     Map<String, dynamic>? query,
   });
+  Stream<dynamic> getStreamData({
+    required String path,
+    // used to filter the data we will filter products based on these query parameters
+    Map<String, dynamic>? query,
+  });
 
   Future<bool> checkIfDataExists(
       {required String path, required String documentId});
