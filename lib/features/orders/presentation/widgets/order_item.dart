@@ -94,9 +94,10 @@ class OrderItemWidget extends StatelessWidget {
                   leading: CachedNetworkImage(
                     imageUrl: product.imageUrl,
                     placeholder: (context, url) => const SizedBox(
-                        width: 24,
-                        height: 24,
-                        child: CircularProgressIndicator()),
+                      width: 24,
+                      height: 24,
+                      child: CircularProgressIndicator(),
+                    ),
                     errorWidget: (context, url, error) =>
                         const Icon(Icons.error),
                   ),
