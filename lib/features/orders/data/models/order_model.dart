@@ -56,8 +56,8 @@ class OrderModel {
         paymentMethod: paymentMethod,
       );
 
-  OrderStatusEnum fetchEnum() {
-    return OrderStatusEnum.values.firstWhere((e) {
+  OrderStatus fetchEnum() {
+    return OrderStatus.values.firstWhere((e) {
       var enumStatus = e.name.toString();
       return enumStatus == (status ?? 'pending');
     });

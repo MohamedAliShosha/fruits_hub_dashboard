@@ -7,6 +7,12 @@ abstract class DatabaseService {
     required Map<String, dynamic> data,
     String? documentId,
   });
+  Future<void> updateData({
+    required String path,
+    required Map<String, dynamic> data,
+    String?
+        documentId, // the id of the document that contains the data we want to update
+  });
 
   Future<dynamic> getData({
     required String path,

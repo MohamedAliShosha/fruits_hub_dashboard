@@ -5,4 +5,5 @@ class BackendEndpoints {
   static const String images = 'images';
   static const String isUserExists = 'users';
   static const getOrders = 'orders';
+  static const updateOrder = 'orders';
 }

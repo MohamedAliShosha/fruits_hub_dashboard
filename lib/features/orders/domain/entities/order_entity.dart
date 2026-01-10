@@ -10,7 +10,7 @@ class OrderEntity {
   final ShippingAddressEntity shippingAddressModel;
   final List<OrderProductEntity> orderProducts;
   final String paymentMethod;
-  final OrderStatusEnum status;
+  final OrderStatus status;
   OrderEntity(
       {required this.totalPrice,
       required this.uId,
