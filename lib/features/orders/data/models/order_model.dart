@@ -12,12 +12,12 @@ class OrderModel {
   final List<OrderProductModel> orderProducts;
   final String paymentMethod;
   final String? status;
-  final String orderID;
+  final String orderId;
   OrderModel(
       {required this.totalPrice,
       required this.uId,
       required this.status,
-      required this.orderID,
+      required this.orderId,
       required this.shippingAddressModel,
       required this.orderProducts,
       required this.paymentMethod});
@@ -26,7 +26,7 @@ class OrderModel {
         totalPrice: json['totalPrice'],
         uId: json['uId'],
         status: json['status'],
-        orderID: json['orderId'],
+        orderId: json['orderId'],
         shippingAddressModel:
             ShippingAddressModel.fromJson(json['shippingAddressModel']),
         orderProducts: List<OrderProductModel>.from(
@@ -47,7 +47,7 @@ class OrderModel {
       };
 
   toEntity() => OrderEntity(
-        orderID: orderID,
+        orderId: orderId,
         totalPrice: totalPrice,
         status: fetchEnum(),
         uId: uId,
